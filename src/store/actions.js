@@ -1,24 +1,24 @@
 
 export default {
-  signin: ({commit}) => {
+  // signin: ({commit}) => {
     
-  },
-  signout: ({commit}) => {
+  // },
+  // signout: ({commit}) => {
     
-  },
-  signup: ({commit}) => {
+  // },
+  // signup: ({commit}) => {
     
-  },
-  addMemory: ({commit}) => {
+  // },
+  // addMemory: ({commit}) => {
     
-  },
-  updateMemory: ({commit}) => {
+  // },
+  // updateMemory: ({commit}) => {
     
-  },
-  removeMemory: ({commit}) => {
+  // },
+  // removeMemory: ({commit}) => {
     
-  },
-  fetchMemory: ({commit}) => {
+  // },
+  // fetchMemory: ({commit}) => {
     
-  }
+  // }
 }

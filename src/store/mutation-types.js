@@ -1,0 +1,7 @@
+export const AUTH_SIGNIN = 'AUTH_SIGNIN'
+export const AUTH_SIGNOUT = 'AUTH_SIGNOUT'
+export const AUTH_SIGNUP = 'AUTH_SIGNUP'
+export const ADD_MEMORY = 'ADD_MEMORY'
+export const REMOVE_MEMORY = 'REMOVE_MEMORY'
+export const UPDATE_MEMORY = 'UPDATE_MEMORY'
+export const FETCH_ALL_MEMORY = 'FETCH_ALL_MEMORY'

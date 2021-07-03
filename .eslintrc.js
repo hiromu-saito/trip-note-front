@@ -3,7 +3,7 @@ module.exports = {
     'vue'
   ],
   extends: [
-    // 'eslint:recommended',
+    'eslint:recommended',
     'plugin:vue/recommended'
   ],
   rules: {

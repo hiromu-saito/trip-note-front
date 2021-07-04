@@ -6,8 +6,9 @@ import {
 
 import {
   required,
-  numeric,
-  max,
+  // numeric,
+  // max,
+  email,
   confirmed,
   // regex,
 } from 'vee-validate/dist/rules'
@@ -19,37 +20,12 @@ extend('required', {
   }
 })
 
-extend('numeric', {
-  ...numeric,
-  message: (fieldName) => {
-    return `${fieldName}は半角の整数で入力してください`
-  }
-})
-
-extend('max', {
-  ...max,
-  message: (fieldName, placeholders) => {
-    return `${fieldName}は${placeholders.length}字以下で入力してください。`
-  }
-})
-
-extend('postalCode', {
-  validate(value) {
-    return value.match(/^\d{3}-?\d{4}$/)
-  },
-  message: (fieldName) => {
-    return `${fieldName}はxxx-xxxxの形式で入力してください`
-  }
-})
-
-extend('tel', {
-  validate(value) {
-    return value.match(/^[0-9-]+$/)
-  },
-  message: (fieldName) => {
-    return `${fieldName}は半角数字とハイフンで入力してください`
-  }
-})
+// extend('max', {
+//   ...max,
+//   message: (fieldName, placeholders) => {
+//     return `${fieldName}は${placeholders.length}字以下で入力してください。`
+//   }
+// })
 
 extend('passmatch', {
   ...confirmed,
@@ -78,26 +54,58 @@ extend('minmax', {
   }
 })
 
-extend('lower', {
-  params: ['target'],
-  validate(value, { target },) {
-    if (target === '' || target === undefined) {
-      return true
-    }
-    return parseInt(value) <= parseInt(target)
-  },
-  message: '{_field_}は{target}より小さい値を入力してください'
+extend('email', {
+  ...email,
+  message: () => {
+    return 'メールアドレスの形式で入力してください'
+  }
 })
 
-extend('higher', {
-  params: ['target'],
-  validate(value, { target },) {
-    if (target === '' || target === undefined) {
-      return true
-    }
-    return parseInt(value) >= parseInt(target)
-  },
-  message: '{_field_}は{target}より大きい値を入力してください'
-})
+// extend('lower', {
+//   params: ['target'],
+//   validate(value, { target },) {
+//     if (target === '' || target === undefined) {
+//       return true
+//     }
+//     return parseInt(value) <= parseInt(target)
+//   },
+//   message: '{_field_}は{target}より小さい値を入力してください'
+// })
+
+// extend('higher', {
+//   params: ['target'],
+//   validate(value, { target },) {
+//     if (target === '' || target === undefined) {
+//       return true
+//     }
+//     return parseInt(value) >= parseInt(target)
+//   },
+//   message: '{_field_}は{target}より大きい値を入力してください'
+// })
+
+// extend('postalCode', {
+//   validate(value) {
+//     return value.match(/^\d{3}-?\d{4}$/)
+//   },
+//   message: (fieldName) => {
+//     return `${fieldName}はxxx-xxxxの形式で入力してください`
+//   }
+// })
+
+// extend('tel', {
+//   validate(value) {
+//     return value.match(/^[0-9-]+$/)
+//   },
+//   message: (fieldName) => {
+//     return `${fieldName}は半角数字とハイフンで入力してください`
+//   }
+// })
+
+// extend('numeric', {
+//   ...numeric,
+//   message: (fieldName) => {
+//     return `${fieldName}は半角の整数で入力してください`
+//   }
+// })
 
 export { ValidationProvider, ValidationObserver }

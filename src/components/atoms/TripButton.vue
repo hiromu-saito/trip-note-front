@@ -1,8 +1,9 @@
 <template>
   <button
+    type="button"
     :class="classes"
     :disabled="disabled"
-    @click.prevent="handleClick">
+    @click="onClick">
     {{ label }}
   </button>
 </template>
@@ -30,8 +31,9 @@ export default {
     }
   },
   methods: {
-    handleClick(ev){
-      this.$emit('click', ev)
+    onClick(ev){
+      console.log(ev)
+      this.$emit('onClick', ev)
     }
   }
 }

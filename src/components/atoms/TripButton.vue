@@ -31,9 +31,8 @@ export default {
     }
   },
   methods: {
-    onClick(ev){
-      console.log(ev)
-      this.$emit('onClick', ev)
+    onClick(){
+      this.$emit('onClick')
     }
   }
 }

@@ -1,9 +1,8 @@
 module.exports = {
   plugins: [
-    'vue'
+    'vue',
   ],
   extends: [
-    'eslint:recommended',
     'plugin:vue/recommended'
   ],
   rules: {
@@ -39,5 +38,5 @@ module.exports = {
     'key-spacing': 2,
     // キーワードの前後には適切なスペースを
     'keyword-spacing': 2,
-  }
+  },
 }

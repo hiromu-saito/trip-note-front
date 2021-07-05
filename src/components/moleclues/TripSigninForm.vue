@@ -59,12 +59,12 @@ export default {
   methods: {
     onLogin(){
       if (this.loginProgress === true){return}
-
-      this.loginProgress === true
+      this.loginProgress = true
       this.login({
-        email: this.email,
+        mail: this.mail,
         password: this.password
       })
+        .catch(err => {throw err})
     }
   }
 }

@@ -1,16 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import TripBoardView from '../components/template/TripBoardView'
+import routes from './routes'
 
 Vue.use(VueRouter)
-
-const routes = [
-  {
-    path: '/',
-    name: '',
-    component: TripBoardView
-  },
-]
 
 const router = new VueRouter({
   mode: 'history',

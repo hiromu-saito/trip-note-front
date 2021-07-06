@@ -18,9 +18,9 @@
         placeholder="パスワード"
         :value.sync="password" />
       <TripButton
-        :disabled="invalid && !loginProgress"
-        label="ログイン"
-        @onClick="onLogin" />
+        :disabled="invalid && !signinProgress"
+        label="サインイン"
+        @onClick="onSignin" />
     </ValidationObserver>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
     ValidationObserver
   },
   props: {
-    login: {
+    signin: {
       type: Function,
       required: true
     }
@@ -47,25 +47,26 @@ export default {
     return {
       mail: '',
       password: '',
-      loginProgress: false,
+      signinProgress: false,
     }
   },
   computed: {
     buttonLabel(){
-      if (this.loginProgress === true){return 'ログイン中...'}
+      if (this.signinProgress === true){return 'ログイン中...'}
       return 'ログイン'
     }
   },
   methods: {
-    onLogin(){
-      if (this.loginProgress === true){return}
-      this.loginProgress = true
-      this.login({
+    onSignin(){
+      if (this.signinProgress === true){return}
+      this.signinProgress = true
+      this.signin({
         mail: this.mail,
         password: this.password
       })
         .catch(err => {throw err})
-    }
+    },
+    
   }
 }
 </script>

@@ -9,7 +9,7 @@ export default [
     component: TripBoardView
   },
   {
-    path: '/singin',
+    path: '/signin',
     name: 'TripSigninView',
     component: TripSigninView
   },

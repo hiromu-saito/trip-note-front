@@ -19,7 +19,7 @@
         :value.sync="password" />
       <TripButton
         :disabled="invalid && !signinProgress"
-        label="サインイン"
+        :label="buttonLabel"
         @onClick="onSignin" />
     </ValidationObserver>
   </div>

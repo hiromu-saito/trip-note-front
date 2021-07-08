@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+  <div>
     テストテストテストテストテストテストテストテスト
-  </v-container>
+  </div>
 </template>
 
 <script>

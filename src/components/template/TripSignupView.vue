@@ -3,7 +3,7 @@
     <h1>Signup</h1>
     <TripSignupForm :signup="signup">
       <router-link to="/signin">
-        サインイン
+        サインインはこちら
       </router-link>
     </tripsignupform>
   </div>
@@ -18,7 +18,17 @@ export default {
     TripSignupForm
   },
   methods: {
-    signup: () =>{}
+    signup(authInfo) {
+      this.$store.dispatch('signup', authInfo)
+        .then(() => {
+          this.$router.push({path: '/signup'})
+        }).catch((err) => {
+          this.throwReject(err)
+        })
+    },
+    throwReject(err){
+      return Promise.reject(err)
+    }
   }
 }
 </script>

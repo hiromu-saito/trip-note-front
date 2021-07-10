@@ -1,6 +1,8 @@
 import TripBoardView from '../components/template/TripBoardView'
 import TripSigninView from '../components/template/TripSigninView'
 import TripSignupView from '../components/template/TripSignupView'
+import TripHotelBoard from '../components/orgasms/TripHotelBoard'
+import TripMemoryBoard from '../components/orgasms/TripMemoryBoard'
 
 export default [
   {
@@ -8,7 +10,17 @@ export default [
     // nameがあるとmetaが効かない？
     // name: 'TripBoardView',
     component: TripBoardView,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: '',
+        component: TripMemoryBoard
+      },
+      {
+        path: 'search',
+        component: TripHotelBoard
+      }
+    ]
   },
   {
     path: '/signin',

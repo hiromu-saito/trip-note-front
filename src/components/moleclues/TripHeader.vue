@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <h1>Trip Note</h1>
+  <div class="trip-header">
+    <h1>
+      Trip Note
+    </h1>
     <TripButton
+      class="trip-button"
       :disabled="signoutProgress"
       :label="buttonLabel"
       @onClick="onSignout" />
@@ -42,6 +45,23 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.trip-header{
+  border: dotted 1px #000;
+  height: 80px;
+  margin: 10px;
+  padding-left: 30px;
+}
 
+.trip-button{
+  float: right;
+  height: 40px;
+  margin-right: 50px;
+  margin-top: 20px;
+}
+h1{
+  display: inline-block;
+  margin: 0;
+  line-height: 80px;
+}
 </style>

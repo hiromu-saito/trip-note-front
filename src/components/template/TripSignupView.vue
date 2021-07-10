@@ -18,9 +18,9 @@ export default {
   },
   methods: {
     signup(authInfo) {
-      this.$store.dispatch('signup', authInfo)
+      return this.$store.dispatch('signup', authInfo)
         .then(() => {
-          this.$router.push({path: '/signup'})
+          this.$router.push({path: '/signin'})
         }).catch((err) => {
           this.throwReject(err)
         })

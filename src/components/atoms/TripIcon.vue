@@ -34,5 +34,9 @@ export default {
 .not-allowed{
   cursor: not-allowed;
 }
+a{
+  display: block;
+  margin: 10px;
+}
 
 </style>

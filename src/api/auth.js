@@ -1,3 +1,5 @@
 export default {
-  signin: ()=>{return Promise.resolve({token: 'token', userId: 1})}
+  signin: () => Promise.resolve({token: 'token', userId: 1}),
+  signup: () => Promise.resolve(),
+  signout: () => Promise.resolve()
 }

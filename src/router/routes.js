@@ -5,8 +5,10 @@ import TripSignupView from '../components/template/TripSignupView'
 export default [
   {
     path: '/',
-    name: 'TripBoardView',
-    component: TripBoardView
+    // nameがあるとmetaが効かない？
+    // name: 'TripBoardView',
+    component: TripBoardView,
+    meta: { requiresAuth: true }
   },
   {
     path: '/signin',

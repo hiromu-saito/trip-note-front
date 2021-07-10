@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     signin(authInfo){
-      this.$store.dispatch('signin', authInfo)
+      return this.$store.dispatch('signin', authInfo)
         .then(() => {
           this.$router.push({path: '/'})
         })

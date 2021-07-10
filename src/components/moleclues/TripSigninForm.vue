@@ -18,7 +18,7 @@
         placeholder="パスワード"
         :value.sync="password" />
       <TripButton
-        :disabled="invalid && !signinProgress"
+        :disabled="invalid || signinProgress"
         :label="buttonLabel"
         @onClick="onSignin" />
     </ValidationObserver>

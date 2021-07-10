@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <div class="signup-form">
     <h1>Signup</h1>
-    <TripSignupForm :signup="signup">
-      <router-link to="/signin">
-        サインインはこちら
-      </router-link>
-    </tripsignupform>
+    <TripSignupForm :signup="signup" />
+    <router-link to="/signin">
+      サインインはこちら
+    </router-link>
   </div>
 </template>
 
@@ -33,6 +32,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.signup-form{
+  margin: 100px 200px;
+}
 
 </style>

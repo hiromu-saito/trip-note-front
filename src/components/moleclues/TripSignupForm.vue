@@ -1,7 +1,7 @@
 <template>
   <div>
     <ValidationObserver
-      v-slot="{invaid}"
+      v-slot="{invalid}"
       tag="form">
       <label for="メールアドレス">メールアドレス</label>
       <TripValidationInput
@@ -27,7 +27,7 @@
         :value.sync="confirmPassword" />
       <TripButton
         :label="buttonLabel"
-        :disabled="invaid && !signupProgress"
+        :disabled="invalid || signupProgress"
         @onClick="onSignup" />
     </ValidationObserver>
   </div>

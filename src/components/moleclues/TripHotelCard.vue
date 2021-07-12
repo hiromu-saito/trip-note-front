@@ -4,16 +4,23 @@
       <p class="hotel-name">
         {{ hotel.name }}
       </p>
-      <p>{{ hotel.address }}</p>
-      <p>{{ hotel.special</p>
+      <p>
+        〒{{ hotel.postalCode }}<br>
+        {{ hotel.address }}
+      </p>
+      <p>{{ hotel.special }}</p>
     </div>
     <div>
-      <p class="image-test">
-        {{ hotel.image }}
+      <p>
+        <a
+          :href="hotel.url"
+          target="”_blank”">
+          <img :src="hotel.image">
+        </a>
       </p>
-      <a :href="hotel.url">詳細を見る</a>
-      <br>
-      <button>思い出を残す</button>
+      <p>
+        <button>思い出を残す</button>
+      </p>
     </div>
   </div>
 </template>
@@ -34,7 +41,8 @@ export default {
 .hotel-card{
   border: solid 1px black;
   display: grid;
-  grid-template-columns: 200px 200px;
+  grid-template-columns: 300px 100px;
+  height: 160px;
   column-gap: 10px;
   row-gap: 1em;
 }

@@ -37,6 +37,7 @@ export default {
 a{
   display: block;
   margin: 10px;
+  cursor: pointer;
 }
 
 </style>

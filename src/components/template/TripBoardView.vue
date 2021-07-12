@@ -3,7 +3,9 @@
     <TripHeader :signout="signout" />
     <section>
       <TripNavigationBar />
-      <router-view />
+      <main>
+        <router-view />
+      </main>
     </section>
   </div>
 </template>
@@ -32,5 +34,9 @@ export default {
 <style scoped>
 section{
   display: flex;
+}
+main {
+  /* margin:0 auto; */
+  margin: 20px;
 }
 </style>

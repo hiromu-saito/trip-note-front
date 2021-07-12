@@ -1,12 +1,17 @@
 <template>
   <div class="memory-board">
-    MemoryBoard
+    <TripMemoryCard />
   </div>
 </template>
 
 <script>
+import TripMemoryCard from '../moleclues/TripMemoryCard.vue'
+
 export default {
-  name: 'TripMemoryBoard'
+  name: 'TripMemoryBoard',
+  components: {
+    TripMemoryCard
+  }
 }
 </script>
 

@@ -1,17 +1,18 @@
 <template>
-  <div class="validate-form">
+  <div>
     <validation-provider
       v-slot="{errors}"
       :name="name"
       :rules="rules">
       <input
-        :id="name"
         v-model="inputValue"
         :type="inputType"
         :name="name"
         :placeholder="placeholder">
       <br>
-      <span class="validate-error">{{ errors[0] }}</span>
+      <span
+        v-show="dispError"
+        class="validate-error">{{ errors[0] }}</span>
     </validation-provider>
   </div>
 </template>
@@ -45,6 +46,10 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    dispError: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -64,9 +69,6 @@ export default {
 .validate-error{
   color: red;
   font-size: 0.6em;
-}
-.validate-form{
-  height: 60px;
 }
 
 </style>

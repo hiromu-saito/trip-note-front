@@ -2,9 +2,11 @@
   <div>
     <ValidationObserver
       v-slot="{invalid}"
-      tag="form">
+      tag="form"
+      @submit.prevent="onSignin">
       <label for="mail">メールアドレス</label>
       <TripValidationForm
+        class="validate-form"
         name="mail"
         rules="email|required"
         input-type="text"
@@ -12,6 +14,7 @@
         :value.sync="mail" />
       <label for="password">パスワード</label>
       <TripValidationForm
+        class="validate-form"
         name="password"
         rules="required|minmax:8,20|numalpha"
         input-type="password"
@@ -20,7 +23,7 @@
       <TripButton
         :disabled="invalid || signinProgress"
         :label="buttonLabel"
-        @onClick="onSignin" />
+        type="submit" />
     </ValidationObserver>
   </div>
 </template>
@@ -71,6 +74,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.validate-form{
+  height: 60px;
+}
 
 </style>

@@ -4,7 +4,7 @@
     <TripSigninForm
       :signin="signin" />
     <router-link to="/signup">
-      新規登録はこちら
+      サインアップはこちら
     </router-link>
   </div>
 </template>

@@ -7,7 +7,7 @@ import {
 import {
   required,
   // numeric,
-  // max,
+  max,
   email,
   confirmed,
   // regex,
@@ -20,12 +20,12 @@ extend('required', {
   }
 })
 
-// extend('max', {
-//   ...max,
-//   message: (fieldName, placeholders) => {
-//     return `${fieldName}は${placeholders.length}字以下で入力してください。`
-//   }
-// })
+extend('max', {
+  ...max,
+  message: (fieldName, placeholders) => {
+    return `${fieldName}は${placeholders.length}字以下で入力してください。`
+  }
+})
 
 extend('passmatch', {
   ...confirmed,

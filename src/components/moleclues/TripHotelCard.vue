@@ -61,7 +61,7 @@ export default {
     },
     addMemory({impressions, date}){
       const memory = {
-        name: this.hotel.name,
+        hotelName: this.hotel.name,
         image: this.hotel.image,
         impressions,
         date,

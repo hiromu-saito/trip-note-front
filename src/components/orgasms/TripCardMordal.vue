@@ -7,31 +7,47 @@
         @onClick="close">
         ×
       </TripIcon>
-      <form @submit.prevent="addMemory">
-        <input
-          id="date"
-          v-model="date"
-          type="date">
-        <label for="impressions">感想</label>
-        <textarea
-          id="impressions"
-          v-model="impressions"
-          cols="30"
-          rows="20" />
-        <button type="submit">
-          思い出を残す
-        </button>
-      </form>
+      <ValidationObserver
+        v-slot="{invalid}"
+        tag="form"
+        @submit.prevent="addMemory">
+        <span>日時</span>
+        <TripValidationInput
+          class="date-form"
+          name="日時"
+          input-type="date"
+          rules="required"
+          :value.sync="date" />
+        <label>感想
+          <TripValidationInput
+            class="impressions-form"
+            name="impressions"
+            input-type="text"
+            rules="max:30"
+            :value.sync="impressions" />
+        </label>
+        <TripButton
+          :disabled="invalid"
+          label="思い出を残す"
+          type="submit" />
+      </ValidationObserver>
     </div>
   </div>
 </template>
 
 <script>
 import TripIcon from '../atoms/TripIcon.vue'
+import TripValidationInput from '../atoms/TripValidationInput.vue'
+import TripButton from '../atoms/TripButton.vue'
+import {ValidationObserver} from '../../common/validate'
+
 export default {
   name: 'TripCardMordal',
   components: {
-    TripIcon
+    TripIcon,
+    TripValidationInput,
+    TripButton,
+    ValidationObserver
   },
   data(){
     return {
@@ -86,5 +102,15 @@ export default {
 .close-icon{
   float: right;
   margin: 0;
+}
+.date-form{
+  margin-bottom: 10px;
+height: 70px;
+}
+.impressions-form{
+  margin: 10px 0;
+}
+.impressions-form input{
+  height: 30px;
 }
 </style>

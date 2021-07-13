@@ -1,6 +1,6 @@
 <template>
   <button
-    type="button"
+    :type="type"
     :class="classes"
     :disabled="disabled"
     @click="onClick">
@@ -20,6 +20,10 @@ export default {
     disabled: {
       type: Boolean,
       defalt: false
+    },
+    type: {
+      type: String,
+      default: 'button'
     }
   },
   computed: {

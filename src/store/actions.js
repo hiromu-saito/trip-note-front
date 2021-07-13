@@ -23,9 +23,13 @@ export default {
       })
       .catch(err => { throw err })
   },
-  // addMemory: ({commit}) => {
-    
-  // },
+  addMemory: ({commit}, memory) => {
+    return Memory.addMemory(memory)
+      .then(() => {
+        commit(types.ADD_MEMORY, memory)
+      })
+      .catch(err => { throw err })
+  },
   // updateMemory: ({commit}) => {
     
   // },

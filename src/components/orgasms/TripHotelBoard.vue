@@ -15,7 +15,8 @@
       <li
         v-for="( hotel,index ) in hotels"
         :key="index">
-        <TripHotelCard :hotel="hotel" />
+        <TripHotelCard
+          :hotel="hotel" />
       </li>
     </ul>
   </div>
@@ -24,7 +25,7 @@
 <script>
 import TripHotelCard from '../moleclues/TripHotelCard.vue'
 import TripHotelForm from '../moleclues/TripHotelForm.vue'
-import TripPagination from '../moleclues/TripPagination.vue' 
+import TripPagination from '../moleclues/TripPagination.vue'
 import axios from 'axios'
 import {HOTEL_SEARCH_URL} from '@/api'
 
@@ -86,7 +87,7 @@ export default {
     },
     pageReset(){
       this.page = 1
-    }
+    },
   }
 }
 </script>

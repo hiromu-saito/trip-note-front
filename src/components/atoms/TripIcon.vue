@@ -2,7 +2,7 @@
   <a
     :disabled="disabled"
     :class="classes"
-    @click="onClick">
+    @click.prevent="onClick">
     <slot />
   </a>
 </template>

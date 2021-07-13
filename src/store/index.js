@@ -9,7 +9,8 @@ const state = {
   auth: {
     token: localStorage.getItem('token'),
     userId: null
-  }
+  },
+  memories: []
 }
 
 export default new Vuex.Store({

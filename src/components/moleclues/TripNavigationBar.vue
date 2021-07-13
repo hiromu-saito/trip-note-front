@@ -27,7 +27,7 @@ export default {
 <style scoped>
 .nav-bar{
   height: 600px;
-  border: 1px dotted black;
+  /* border: 1px dotted black; */
   margin: 10px;
 }
 

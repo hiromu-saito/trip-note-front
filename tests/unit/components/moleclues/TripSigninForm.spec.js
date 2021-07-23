@@ -12,7 +12,7 @@ describe('TripSigninForm', () => {
           signin: signinStub
         }
       })
-      wrapper.setData({mail: 'foo@domain.com', password: 'password'})
+      wrapper.setData({mailAddress: 'foo@domain.com', password: 'password'})
       const button = wrapper.find('button')
       
       button.trigger('click')
@@ -20,7 +20,7 @@ describe('TripSigninForm', () => {
       
       wrapper.vm.$nextTick(() => {
         expect(signinStub.mock.calls.length).toBe(1)
-        expect(signinStub.mock.calls[0][0].mail).toBe('foo@domain.com')
+        expect(signinStub.mock.calls[0][0].mailAddress).toBe('foo@domain.com')
         expect(signinStub.mock.calls[0][0].password).toBe('password')
         done()
       })

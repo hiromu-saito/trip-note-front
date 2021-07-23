@@ -2,18 +2,18 @@ import {Auth, Memory} from '@/api'
 import * as types from '@/store/mutation-types'
 
 export default {
-  signin: ({commit}, {mail, password}) => {
-    return Auth.signin({mail, password})
+  signin: ({commit}, {mailAddress, password}) => {
+    return Auth.signin({mailAddress, password})
       .then(({token, userId}) => {
         localStorage.setItem('token', token)
         commit(types.AUTH_SIGNIN, {token, userId})
       })
-      .catch(err => { throw err })
+      .catch(err => Promise.reject(err))
   },
-  signup: ({commit}, {mail, password}) => {
-    return Auth.signup({mail, password})
+  signup: ({commit}, {mailAddress, password}) => {
+    return Auth.signup({mailAddress, password})
       .then(() => Promise.resolve())
-      .catch(err => { throw err })
+      .catch(err => Promise.reject(err))
   },
   signout: ({commit, state}) => {
     return Auth.signout(state.auth)

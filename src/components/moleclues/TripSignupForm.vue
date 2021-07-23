@@ -11,7 +11,7 @@
         rules="required|email"
         placeholder="メールアドレス"
         input-type="text"
-        :value.sync="mail" />
+        :value.sync="mailAddress" />
       <label for="パスワード">パスワード</label>
       <TripValidationInput
         class="validate-form"
@@ -57,7 +57,7 @@ export default {
   },
   data(){
     return {
-      mail: '',
+      mailAddress: '',
       password: '',
       confirmPassword: '',
       signupProgress: false
@@ -74,8 +74,11 @@ export default {
       if (this.signupProgress === true){return}
       this.signupProgress = true
       
-      this.signup({mail: this.mail, password: this.password})
-        .catch(err => {throw err})
+      this.signup({mailAddress: this.mailAddress, password: this.password})
+        .then(() => {})
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 }

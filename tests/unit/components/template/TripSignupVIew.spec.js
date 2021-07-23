@@ -19,7 +19,7 @@ describe('TripSignupViwe', () => {
       render: h => ('p', ['signup form'])
     }
   })
-  describe('signinが成功', () =>{
+  describe('signupが成功', () =>{
     test('ログインページに遷移すること', async() =>{
       const actions = { signup: jest.fn(() => Promise.resolve()) }
       const store = new Vuex.Store({
@@ -40,7 +40,7 @@ describe('TripSignupViwe', () => {
       await flushPromises()
 
       expect($router.push.mock.calls.length).toBe(1)
-      expect($router.push.mock.calls[0][0].path).toBe('/signup')
+      expect($router.push.mock.calls[0][0].path).toBe('/signin')
     })
   })
   describe('signinが失敗', () => {

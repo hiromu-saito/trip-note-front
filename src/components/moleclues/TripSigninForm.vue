@@ -4,14 +4,14 @@
       v-slot="{invalid}"
       tag="form"
       @submit.prevent="onSignin">
-      <label for="mail">メールアドレス</label>
+      <label for="mailAddress">メールアドレス</label>
       <TripValidationForm
         class="validate-form"
-        name="mail"
+        name="mailAddress"
         rules="email|required"
         input-type="text"
         placeholder="メールアドレス"
-        :value.sync="mail" />
+        :value.sync="mailAddress" />
       <label for="password">パスワード</label>
       <TripValidationForm
         class="validate-form"
@@ -48,7 +48,7 @@ export default {
   },
   data() {
     return {
-      mail: '',
+      mailAddress: '',
       password: '',
       signinProgress: false,
     }
@@ -64,7 +64,7 @@ export default {
       if (this.signinProgress === true){return}
       this.signinProgress = true
       this.signin({
-        mail: this.mail,
+        mailAddress: this.mailAddress,
         password: this.password
       })
         .catch(err => {throw err})

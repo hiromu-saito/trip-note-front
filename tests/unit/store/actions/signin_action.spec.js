@@ -9,7 +9,7 @@ describe('signin action', () => {
     test('APIからのレスポンスでミューテーションが呼ばれること', async () => {
       Auth.signin.mockResolvedValue({token: 'token', userId: 1})
       const commit = jest.fn()
-      await actions.signin({commit}, {mail: 'mail', password: 'password'})
+      await actions.signin({commit}, {mailAddress: 'mailAddress', password: 'password'})
 
       expect(commit.mock.calls.length).toBe(1)
       expect(commit.mock.calls[0][0]).toBe(types.AUTH_SIGNIN)

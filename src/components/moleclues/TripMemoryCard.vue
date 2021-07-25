@@ -12,17 +12,17 @@
           name="日時"
           input-type="date"
           rules="required"
-          :value.sync="date" />
+          :value.sync="accommodationDate" />
         <TripValidationInput
           class="impressions-form"
           name="感想"
           input-type="text"
           rules="max:30"
-          :value.sync="impressions" />
+          :value.sync="impression" />
       </div>
       <div>
         <p>
-          <img :src="memory.image">
+          <img :src="memory.hotelImage">
         </p>
         <TripButton
           label="更新する"
@@ -56,27 +56,35 @@ export default {
   },
   data(){
     return {
-      impressions: '',
-      date: ''
+      impression: '',
+      accommodationDate: ''
     }
   },
   computed: {
     isUpdated(){
-      return !(this.memory.impressions === this.impressions && this.memory.date === this.date)
+      return !(this.memory.impression === this.impression && this.memory.accommodationDate === this.accommodationDate)
     }
   },
   mounted(){
-    this.impressions = this.memory.impressions
-    this.date = this.memory.date
+    this.impression = this.memory.impression
+    this.accommodationDate = this.memory.accommodationDate
   },
   methods: {
     updateMemory(){
-      if (!confirm('本当に思い出をアップデートしますか。')){ return }
-      console.log('更新処理')
+      if (!confirm('本当に思い出をアップデートしますか。')){
+        this.impression = this.memory.impression
+        this.accommodationDate = this.accommodationDate
+        return
+      }
+      this.$store.dispatch('updateMemory', {
+        id: this.memory.id,
+        memory: { impression: this.impression, accommodationDate: this.accommodationDate}
+      }
+      )
     },
     removeMemory(){
       if (!confirm('本当に思い出を消してしまいますか。')){ return }
-      console.log('削除処理')
+      this.$store.dispatch('removeMemory', this.memory.id)
     }
   }
 }

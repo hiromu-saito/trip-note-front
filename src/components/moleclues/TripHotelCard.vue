@@ -59,12 +59,12 @@ export default {
     closeMordal(){
       this.overlay = false
     },
-    addMemory({impressions, date}){
+    addMemory({impression, accommodationDate}){
       const memory = {
         hotelName: this.hotel.name,
-        image: this.hotel.image,
-        impressions,
-        date,
+        hotelImage: this.hotel.image,
+        impression,
+        accommodationDate
       }
       this.$store.dispatch('addMemory', memory)
         .then(() => {

@@ -23,6 +23,12 @@ export default {
     memories(){
       return this.$store.state.memories
     }
+  },
+  async mounted(){
+    await this.$store.dispatch('fetchMemory')
+      .catch(err => {
+        throw err
+      })
   }
 }
 </script>

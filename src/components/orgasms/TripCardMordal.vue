@@ -60,7 +60,7 @@ export default {
       this.$emit('close')
     },
     addMemory(){
-      this.$emit('addMemory', {impressions: this.impressions, date: this.date})
+      this.$emit('addMemory', {impression: this.impressions, accommodationDate: this.date})
     }
   }
 }

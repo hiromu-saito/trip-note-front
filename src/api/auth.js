@@ -23,5 +23,15 @@ export default {
         })
     })
   },
-  signout: () => Promise.resolve()
+  signout: (token) =>{
+    return new Promise((resolve, reject) => {
+      axios.delete('/auth', {headers: {'x-trip-token': token}})
+        .then(() => {
+          resolve()
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  }
 }

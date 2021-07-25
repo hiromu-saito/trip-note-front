@@ -71,13 +71,18 @@ export default {
   },
   methods: {
     onSignup(){
-      if (this.signupProgress === true){return}
+      if (this.signupProgress === true){ return }
       this.signupProgress = true
-      
-      this.signup({mailAddress: this.mailAddress, password: this.password})
-        .then(() => {})
+      this.signup({
+        mailAddress: this.mailAddress,
+        password: this.password
+      })
         .catch(err => {
-          console.log(err)
+          if (err.response.status = 409){
+            console.log('登録済みのメールアドレスです')
+          } else {
+            throw err
+          }
         })
     }
   }

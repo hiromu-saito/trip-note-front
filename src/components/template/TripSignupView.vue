@@ -21,12 +21,12 @@ export default {
       return this.$store.dispatch('signup', authInfo)
         .then(() => {
           this.$router.push({path: '/signin'})
-        }).catch((err) => {
+        }).catch(err => {
           this.throwReject(err)
         })
     },
     throwReject(err){
-      return Promise.reject(err)
+      throw err
     }
   }
 }

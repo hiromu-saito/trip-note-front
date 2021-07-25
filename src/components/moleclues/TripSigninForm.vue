@@ -61,13 +61,16 @@ export default {
   },
   methods: {
     onSignin(){
-      if (this.signinProgress === true){return}
+      if (this.signinProgress === true){ return }
       this.signinProgress = true
       this.signin({
         mailAddress: this.mailAddress,
         password: this.password
       })
-        .catch(err => {throw err})
+        .catch(err => {
+          console.log('signinForm')
+          console.log(err.response.status)
+        })
     },
     
   }

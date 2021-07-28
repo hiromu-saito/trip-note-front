@@ -19,9 +19,9 @@
           rules="required"
           :value.sync="date" />
         <label>感想
-          <TripValidationInput
+          <TripValidationTextArea
             class="impressions-form"
-            name="impressions"
+            name="感想"
             input-type="text"
             rules="max:30"
             :value.sync="impressions" />
@@ -38,6 +38,7 @@
 <script>
 import TripIcon from '../atoms/TripIcon.vue'
 import TripValidationInput from '../atoms/TripValidationInput.vue'
+import TripValidationTextArea from '../atoms/TripValidationTextArea.vue'
 import TripButton from '../atoms/TripButton.vue'
 import {ValidationObserver} from '../../common/validate'
 
@@ -47,7 +48,8 @@ export default {
     TripIcon,
     TripValidationInput,
     TripButton,
-    ValidationObserver
+    ValidationObserver,
+    TripValidationTextArea
   },
   data(){
     return {
@@ -88,6 +90,7 @@ export default {
 #content{
   z-index:2;
   width:50%;
+  height: 30%;
   padding: 1em;
   background:#fff;
 }
@@ -105,12 +108,13 @@ export default {
 }
 .date-form{
   margin-bottom: 10px;
-height: 70px;
+  height: 70px;
 }
 .impressions-form{
   margin: 10px 0;
+  height: 100px;
 }
-.impressions-form input{
-  height: 30px;
+.impressions-form textarea{
+  height: 50px;
 }
 </style>

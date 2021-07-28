@@ -1,4 +1,3 @@
-import { Store } from 'vuex'
 import * as types from './mutation-types'
 
 export default {
@@ -10,10 +9,9 @@ export default {
     state.auth.userId = null
     state.memories = []
   },
-  // [types.AUTH_SIGNUP](state, payload){},
-  // [types.ADD_MEMORY](state, payload){
-  //   state.memories.push(payload)
-  // },
+  [types.ADD_MEMORY](state, payload){
+    state.memories.push(payload)
+  },
   [types.REMOVE_MEMORY](state, payload){
     state.memories = state.memories.filter(memory => memory.id !== payload)
   },

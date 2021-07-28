@@ -16,20 +16,31 @@
         <img :src="memory.hotelImage">
       </p>
       <TripButton
-        label="更新する" />
+        label="更新する"
+        @onClick="displayMordal" />
       <TripButton
-        label="削除する" />
+        label="削除する" 
+        @onClick="removeMemory" />
     </div>
+    <TripCardMordal
+      v-show="overlay"
+      update-mode
+      :down-impression.sync="impression"
+      :down-accommodation-date.sync="accommodationDate"
+      @updateMemory="updateMemory"
+      @close="closeMordal" />
   </div>
 </template>
 
 <script>
 import TripButton from '@/components/atoms/TripButton'
+import TripCardMordal from '../orgasms/TripCardMordal.vue'
 
 export default {
   name: 'TripMemoryCard',
   components: {
     TripButton,
+    TripCardMordal
   },
   props: {
     memory: {
@@ -39,20 +50,37 @@ export default {
   },
   data(){
     return {
-      overlay: false
+      overlay: false,
+      impression: '',
+      accommodationDate: ''
     }
+  },
+  mounted(){
+    this.propsMemoryReset()
   },
   methods: {
     updateMemory(){
-      if (!confirm('本当に思い出をアップデートしますか。')){
-        return
-      }
-      //update処理
+      this.$store.dispatch('updateMemory', {
+        id: this.memory.id,
+        memory: {impression: this.impression, accommodationDate: this.accommodationDate}
+      })
+      this.closeMordal()
+      this.$router.push('/')
     },
     removeMemory(){
       if (!confirm('本当に思い出を消してしまいますか。')){ return }
       this.$store.dispatch('removeMemory', this.memory.id)
     },
+    displayMordal(){
+      this.overlay = true
+    },
+    closeMordal(){
+      this.overlay = false
+    },
+    propsMemoryReset(){
+      this.impression = this.memory.impression
+      this.accommodationDate = this.memory.accommodationDate
+    }
   }
 }
 </script>

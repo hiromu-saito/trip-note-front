@@ -26,6 +26,8 @@
     </div>
     <TripCardMordal
       v-show="overlay"
+      :down-impression.sync="impression"
+      :down-accommodation-date.sync="accommodationDate"
       @addMemory="addMemory"
       @close="closeMordal" />
   </div>
@@ -49,7 +51,9 @@ export default {
   },
   data(){
     return {
-      overlay: false
+      overlay: false,
+      impression: '',
+      accommodationDate: ''
     }
   },
   methods: {
@@ -59,12 +63,12 @@ export default {
     closeMordal(){
       this.overlay = false
     },
-    addMemory({impression, accommodationDate}){
+    addMemory(){
       const memory = {
         hotelName: this.hotel.name,
         hotelImage: this.hotel.image,
-        impression,
-        accommodationDate
+        impression: this.impression,
+        accommodationDate: this.accommodationDate
       }
       this.$store.dispatch('addMemory', memory)
         .then(() => {

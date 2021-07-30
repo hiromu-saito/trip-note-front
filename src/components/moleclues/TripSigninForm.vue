@@ -25,6 +25,11 @@
         :label="buttonLabel"
         type="submit" />
     </ValidationObserver>
+    <p
+      v-if="authError"
+      class="auth-error">
+      メールアドレスまたはパスワードが正しくありません。
+    </p>
   </div>
 </template>
 
@@ -51,6 +56,7 @@ export default {
       mailAddress: '',
       password: '',
       signinProgress: false,
+      authError: false
     }
   },
   computed: {
@@ -68,8 +74,13 @@ export default {
         password: this.password
       })
         .catch(err => {
-          console.log('signinForm')
-          console.log(err.response.status)
+          if (err.response.state = 401){
+
+            this.signinProgress = false
+            this.authError = true
+          } else {
+            throw err
+          }
         })
     },
     
@@ -81,5 +92,7 @@ export default {
 .validate-form{
   height: 60px;
 }
-
+.auth-error{
+  color: red;
+}
 </style>

@@ -1,7 +1,8 @@
 <template>
-  <div class="signin-form">
+  <div class="signin-view">
     <h1>Signin</h1>
     <TripSigninForm
+      class="signin-form"
       :signin="signin" />
     <router-link to="/signup">
       サインアップはこちら
@@ -35,8 +36,11 @@ export default {
 </script>
 
 <style scoped>
-.signin-form{
+.signin-view{
   margin: 100px 200px;
+}
+.signin-form{
+  height: 400px;
 }
 
 </style>

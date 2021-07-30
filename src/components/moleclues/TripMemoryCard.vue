@@ -65,7 +65,7 @@ export default {
         memory: {impression: this.impression, accommodationDate: this.accommodationDate}
       })
       this.closeMordal()
-      this.$router.push('/')
+      this.$router.go({path: this.$router.currentRoute.path, force: true})
     },
     removeMemory(){
       if (!confirm('本当に思い出を消してしまいますか。')){ return }

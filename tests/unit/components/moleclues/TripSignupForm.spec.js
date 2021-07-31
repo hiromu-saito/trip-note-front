@@ -12,9 +12,7 @@ describe('TripSignupForm', () => {
       }
     })
     wrapper.setData({mailAddress: 'foo@domain.com', password: 'password', confirmPassword: 'password'})
-    const button = wrapper.find('button')
-    button.trigger('click')
-    await flushPromises()
+    wrapper.find('form').trigger('submit.prevent')
 
     expect(signup.mock.calls.length).toBe(1)
     expect(signup.mock.calls[0][0].mailAddress).toBe('foo@domain.com')
@@ -29,9 +27,9 @@ describe('TripSignupForm', () => {
     })
     wrapper.setData({mailAddress: 'foo@domain.com', password: 'password', confirmPassword: 'password'})
     const button = wrapper.find('button')
-      
+
     expect(button.text()).toBe('サインアップ')
-    button.trigger('click')
+    wrapper.find('form').trigger('submit.prevent')
     await flushPromises()
 
     expect(wrapper.vm.signupProgress).toBe(true)

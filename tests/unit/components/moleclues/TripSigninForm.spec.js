@@ -13,9 +13,7 @@ describe('TripSigninForm', () => {
         }
       })
       wrapper.setData({mailAddress: 'foo@domain.com', password: 'password'})
-      const button = wrapper.find('button')
-      
-      button.trigger('click')
+      wrapper.find('form').trigger('submit.prevent')
       expect(wrapper.vm.signinProgress).toBe(true)
       
       wrapper.vm.$nextTick(() => {

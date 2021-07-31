@@ -2,7 +2,7 @@
   <div>
     <p>キーワード検索</p>
     <ValidationObserver v-slot="{invalid}">
-      <form @submit.prevent="search">
+      <form @submit.prevent="onClick">
         <TripValidationInput
           class="search-form"
           name="keyword"
@@ -38,11 +38,11 @@ export default {
   },
   methods: {
     search(){
-      this.$emit('search')
-      this.onClick()
+      this.$emit('search', this.keyword)
     },
     onClick(){
-      this.$emit('onClick', this.keyword)
+      this.$emit('onClick')
+      this.search()
     },
 
   }

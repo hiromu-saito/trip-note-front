@@ -1,58 +1,59 @@
 <template>
   <div>
-    <TripIcon
-      class="trip-icon"
-      :disabled="disablePrev"
-      @onClick="prev">
-      &lt;前へ
-    </TripIcon>
-    {{ pageNum }}
-    <TripIcon
-      class="trip-icon"
-      :disabled="disableNext"
-      @onClick="next">
-      次へ&gt;
-    </TripIcon>
+    <span v-if="isFirstPage">
+      ← 前へ
+    </span>
+    <TripButton
+      v-else
+      label="← 前へ"
+      @onClick="transitionPage(currentPage-1)" />
+    {{ currentPage }}
+    <span v-if="isLastPage">
+      次へ →
+    </span>
+    <TripButton
+      v-else
+      label="次へ →"
+      @onClick="transitionPage(currentPage+1)" />
   </div>
 </template>
 
 <script>
-import TripIcon from '../atoms/TripIcon.vue'
+
+import TripButton from '../atoms/TripButton.vue'
+
 export default {
   name: 'TripPagination',
   components: {
-    TripIcon
+    TripButton
   },
   props: {
-    pageNum: {
+    currentPage: {
       type: Number,
       require: true,
       default: 0
     },
-    disablePrev: {
-      type: Boolean,
-      required: true,
-      default: false
+    lastPage: {
+      type: Number,
+      require: true,
+      default: 0
+    }
+  },
+  computed: {
+    isFirstPage(){
+      return this.currentPage === 1
     },
-    disableNext: {
-      type: Boolean,
-      required: true,
-      default: false
+    isLastPage(){
+      return this.currentPage === this.lastPage
     }
   },
   methods: {
-    prev() {
-      this.$emit('prev')
-    },
-    next(){
-      this.$emit('next')
+    transitionPage(page){
+      this.$emit('transition-page', page)
     }
   }
 }
 </script>
 
 <style scoped>
-.trip-icon{
-  display: inline-block;
-}
 </style>

@@ -2,15 +2,13 @@
   <div>
     <TripHotelForm
       ref="form"
-      @search="pageReset"
-      @onClick="searchHotels" />
+      @onClick="pageReset"
+      @search="searchHotels" />
     <TripPagination
       v-if="isDisplayPagination"
-      :disable-next="disableNext"
-      :disable-prev="disablePrev"
-      :page-num="page"
-      @prev="prev"
-      @next="next" />
+      :current-page="currentPage"
+      :last-page="lastPage"
+      @transition-page="transitionPage" />
     <ul class="hotel-board">
       <li
         v-for="( hotel,index ) in hotels"
@@ -39,27 +37,21 @@ export default {
   data(){
     return {
       hotels: [],
-      page: 1,
-      pageCount: 0
+      currentPage: 1,
+      lastPage: 0
     }
   },
   computed: {
     isDisplayPagination(){
-      return this.pageCount !== 0
+      return this.lastPage !== 0
     },
-    disablePrev(){
-      return this.page === 1
-    },
-    disableNext(){
-      return this.page === this.pageCount
-    }
   },
   methods: {
     async searchHotels(keyword){
       this.hotels = []
-      const url = HOTEL_SEARCH_URL.replace('%keyword', keyword).replace('%page', String(this.page))
+      const url = HOTEL_SEARCH_URL.replace('%keyword', keyword).replace('%currentPage', String(this.page))
       await axios.get(url).then(res => {
-        this.pageCount = res.data.pagingInfo.pageCount
+        this.lastPage = res.data.pagingInfo.pageCount
 
         res.data.hotels.forEach(h => {
           const hotelBasicInfo = h.hotel[0].hotelBasicInfo
@@ -77,17 +69,13 @@ export default {
       })
         .catch(err => { throw err })
     },
-    prev(){
-      this.page--
-      this.$refs.form.onClick()
-    },
-    next(){
-      this.page++
-      this.$refs.form.onClick()
-    },
     pageReset(){
-      this.page = 1
+      this.currentPage = 1
     },
+    transitionPage(page){
+      this.currentPage = page
+      this.$refs.form.search()
+    }
   }
 }
 </script>

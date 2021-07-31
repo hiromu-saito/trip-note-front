@@ -13,7 +13,9 @@ export default {
   },
   signup: ({commit}, {mailAddress, password}) => {
     return Auth.signup({mailAddress, password})
-      .then(() => Promise.resolve())
+      .then(() =>{
+        commit(types.AUTH_SIGNOUT)
+      })
       .catch(err => Promise.reject(err))
   },
   signout: ({commit, state}) => {

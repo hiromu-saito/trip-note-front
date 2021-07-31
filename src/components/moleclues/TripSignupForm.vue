@@ -34,6 +34,11 @@
         :disabled="invalid || signupProgress"
         type="submit" />
     </ValidationObserver>
+    <p
+      v-if="duplicateError"
+      class="duplicate-error">
+      登録済みのメールアドレスです
+    </p>
   </div>
 </template>
 
@@ -60,7 +65,8 @@ export default {
       mailAddress: '',
       password: '',
       confirmPassword: '',
-      signupProgress: false
+      signupProgress: false,
+      duplicateError: false
     }
   },
   computed: {
@@ -79,7 +85,8 @@ export default {
       })
         .catch(err => {
           if (err.response.status = 409){
-            console.log('登録済みのメールアドレスです')
+            this.signupProgress = false
+            this.duplicateError = true
           } else {
             throw err
           }
@@ -92,6 +99,9 @@ export default {
 <style scoped>
 .validate-form{
   height: 60px;
+}
+.duplicate-error{
+  color: red;
 }
 
 </style>

@@ -10,25 +10,25 @@
       <ValidationObserver
         v-slot="{invalid}"
         tag="form"
-        @submit.prevent="addMemory">
+        @submit.prevent="onSubmit">
         <span>日時</span>
         <TripValidationInput
           class="date-form"
           name="日時"
           input-type="date"
           rules="required"
-          :value.sync="date" />
+          :value.sync="accommodationDate" />
         <label>感想
-          <TripValidationInput
+          <TripValidationTextArea
             class="impressions-form"
-            name="impressions"
+            name="感想"
             input-type="text"
             rules="max:30"
-            :value.sync="impressions" />
+            :value.sync="impression" />
         </label>
         <TripButton
           :disabled="invalid"
-          label="思い出を残す"
+          :label="buttonLabel"
           type="submit" />
       </ValidationObserver>
     </div>
@@ -38,6 +38,7 @@
 <script>
 import TripIcon from '../atoms/TripIcon.vue'
 import TripValidationInput from '../atoms/TripValidationInput.vue'
+import TripValidationTextArea from '../atoms/TripValidationTextArea.vue'
 import TripButton from '../atoms/TripButton.vue'
 import {ValidationObserver} from '../../common/validate'
 
@@ -47,20 +48,60 @@ export default {
     TripIcon,
     TripValidationInput,
     TripButton,
-    ValidationObserver
+    ValidationObserver,
+    TripValidationTextArea
   },
-  data(){
-    return {
-      impressions: '',
-      date: ''
+  props: {
+    downImpression: {
+      type: String,
+      required: true
+    },
+    downAccommodationDate: {
+      type: String,
+      required: true
+    },
+    updateMode: {
+      type: Boolean,
+      default: false,
+    }
+  },
+  computed: {
+    impression: {
+      get(){
+        return this.$props.downImpression
+      },
+      set(impression){
+        this.$emit('update:downImpression', impression)
+      }
+    },
+    accommodationDate: {
+      get(){
+        return this.$props.downAccommodationDate
+      },
+      set(accommodationDate){
+        this.$emit('update:downAccommodationDate', accommodationDate)
+      }
+    },
+    buttonLabel(){
+      return this.updateMode ? '思い出を更新する':'思い出を残す'
     }
   },
   methods: {
     close(){
       this.$emit('close')
     },
+    onSubmit(){
+      if (this.updateMode){
+        this.updateMemory()
+      } else {
+        this.addMemory()
+      }
+    },
     addMemory(){
-      this.$emit('addMemory', {impression: this.impressions, accommodationDate: this.date})
+      this.$emit('addMemory')
+    },
+    updateMemory(){
+      this.$emit('updateMemory')
     }
   }
 }
@@ -88,6 +129,7 @@ export default {
 #content{
   z-index:2;
   width:50%;
+  height: 30%;
   padding: 1em;
   background:#fff;
 }
@@ -105,12 +147,13 @@ export default {
 }
 .date-form{
   margin-bottom: 10px;
-height: 70px;
+  height: 70px;
 }
 .impressions-form{
   margin: 10px 0;
+  height: 100px;
 }
-.impressions-form input{
-  height: 30px;
+.impressions-form textarea{
+  height: 50px;
 }
 </style>

@@ -14,7 +14,7 @@
       <p>
         <a
           :href="hotel.url"
-          target="”_blank”">
+          target="_blank">
           <img :src="hotel.image">
         </a>
       </p>
@@ -68,8 +68,10 @@ export default {
         hotelName: this.hotel.name,
         hotelImage: this.hotel.image,
         impression: this.impression,
-        accommodationDate: this.accommodationDate
+        accommodationDate: this.accommodationDate,
+        detailUrl: this.hotel.url
       }
+      console.log(memory)
       this.$store.dispatch('addMemory', memory)
         .then(() => {
           this.$router.push({path: '/'})

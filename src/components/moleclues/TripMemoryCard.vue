@@ -13,7 +13,11 @@
     </div>
     <div>
       <p>
-        <img :src="memory.hotelImage">
+        <a
+          :href="memory.detailUrl"
+          target="_blank">
+          <img :src="memory.hotelImage">
+        </a>
       </p>
       <TripButton
         label="更新する"

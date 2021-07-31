@@ -151,7 +151,7 @@ export default {
 }
 .impressions-form{
   margin: 10px 0;
-  height: 100px;
+  height: 80px;
 }
 .impressions-form textarea{
   height: 50px;

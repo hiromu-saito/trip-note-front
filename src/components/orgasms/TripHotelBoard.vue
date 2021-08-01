@@ -6,6 +6,7 @@
       @search="searchHotels" />
     <TripPagination
       v-if="isDisplayPagination"
+      class="pagination"
       :current-page="currentPage"
       :last-page="lastPage"
       @transition-page="transitionPage" />
@@ -49,7 +50,7 @@ export default {
   methods: {
     async searchHotels(keyword){
       this.hotels = []
-      const url = HOTEL_SEARCH_URL.replace('%keyword', keyword).replace('%currentPage', String(this.page))
+      const url = HOTEL_SEARCH_URL.replace('%keyword', keyword).replace('%currentPage', String(this.currentPage))
       await axios.get(url).then(res => {
         this.lastPage = res.data.pagingInfo.pageCount
 
@@ -87,6 +88,9 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   list-style: none;
+}
+.pagination{
+  text-align: center;
 }
 
 </style>

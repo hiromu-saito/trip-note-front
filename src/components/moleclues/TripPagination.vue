@@ -7,7 +7,17 @@
       v-else
       label="← 前へ"
       @onClick="transitionPage(currentPage-1)" />
-    {{ currentPage }}
+    <TripButton
+      v-if="!isFirstPage"
+      label="1"
+      @onClick="transitionPage(1)" />
+    <span v-if="currentPage > 2">...</span>
+    <span> {{ currentPage }}</span>
+    <span v-if="currentPage < lastPage -1">...</span>
+    <TripButton
+      v-if="!isLastPage"
+      :label="lastPageLabel"
+      @onClick="transitionPage(lastPage)" />
     <span v-if="isLastPage">
       次へ →
     </span>
@@ -45,6 +55,9 @@ export default {
     },
     isLastPage(){
       return this.currentPage === this.lastPage
+    },
+    lastPageLabel(){
+      return String(this.lastPage)
     }
   },
   methods: {

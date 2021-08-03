@@ -3,7 +3,7 @@
     :type="type"
     :class="classes"
     :disabled="disabled"
-    @click.prevent="onClick">
+    @click="onClick">
     {{ label }}
   </button>
 </template>

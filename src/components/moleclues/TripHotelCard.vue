@@ -53,7 +53,7 @@ export default {
     return {
       overlay: false,
       impression: '',
-      accommodationDate: ''
+      accommodationDate: '',
     }
   },
   methods: {
@@ -71,7 +71,6 @@ export default {
         accommodationDate: this.accommodationDate,
         detailUrl: this.hotel.url
       }
-      console.log(memory)
       this.$store.dispatch('addMemory', memory)
         .then(() => {
           this.$router.push({path: '/'})

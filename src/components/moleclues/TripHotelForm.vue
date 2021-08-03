@@ -11,9 +11,9 @@
           :disp-error="false"
           rules="required" />
         <TripButton
-          label="ホテルを検索する"
+          label="検索"
           type="submit"
-          :disabled="invalid" />
+          :disabled="invalid || isSearching" />
       </form>
     </validationobserver>
   </div>
@@ -36,6 +36,11 @@ export default {
       keyword: ''
     }
   },
+  computed: {
+    isSearching(){
+      return this.$store.state.isSearching
+    },
+  },
   methods: {
     search(){
       this.$emit('search', this.keyword)
@@ -44,7 +49,6 @@ export default {
       this.$emit('onClick')
       this.search()
     },
-
   }
 }
 </script>

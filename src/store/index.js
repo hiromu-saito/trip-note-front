@@ -10,7 +10,8 @@ const state = {
     token: localStorage.getItem('token'),
     userId: null
   },
-  memories: []
+  memories: [],
+  isSearching: false
 }
 
 export default new Vuex.Store({

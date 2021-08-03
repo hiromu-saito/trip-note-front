@@ -23,4 +23,7 @@ export default {
   [types.FETCH_ALL_MEMORY](state, payload){
     state.memories　= payload
   },
+  [types.UPDATE_IS_SEARCHING](state, payload){
+    state.isSearching = payload
+  }
 }

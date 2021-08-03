@@ -5,10 +5,12 @@
     </span>
     <TripButton
       v-else
+      :disabled="isSearching"
       label="← 前へ"
       @onClick="transitionPage(currentPage-1)" />
     <TripButton
       v-if="!isFirstPage"
+      :disabled="isSearching"
       label="1"
       @onClick="transitionPage(1)" />
     <span v-if="currentPage > 2">...</span>
@@ -16,6 +18,7 @@
     <span v-if="currentPage < lastPage -1">...</span>
     <TripButton
       v-if="!isLastPage"
+      :disabled="isSearching"
       :label="lastPageLabel"
       @onClick="transitionPage(lastPage)" />
     <span v-if="isLastPage">
@@ -23,6 +26,7 @@
     </span>
     <TripButton
       v-else
+      :disabled="isSearching"
       label="次へ →"
       @onClick="transitionPage(currentPage+1)" />
   </div>
@@ -58,7 +62,10 @@ export default {
     },
     lastPageLabel(){
       return String(this.lastPage)
-    }
+    },
+    isSearching(){
+      return this.$store.state.isSearching
+    },
   },
   methods: {
     transitionPage(page){

@@ -38,5 +38,6 @@ section{
 main {
   /* margin:0 auto; */
   margin: 20px;
+  flex-basis: 1400px;
 }
 </style>

@@ -27,6 +27,7 @@ import TripHotelForm from '../moleclues/TripHotelForm.vue'
 import TripPagination from '../moleclues/TripPagination.vue'
 import axios from 'axios'
 import {HOTEL_SEARCH_URL} from '@/api'
+import * as types from '@/store/mutation-types'
 
 export default {
   name: 'TripHotelBoard',
@@ -39,7 +40,8 @@ export default {
     return {
       hotels: [],
       currentPage: 1,
-      lastPage: 0
+      lastPage: 0,
+      isSearching: false
     }
   },
   computed: {
@@ -51,6 +53,7 @@ export default {
     async searchHotels(keyword){
       this.hotels = []
       const url = HOTEL_SEARCH_URL.replace('%keyword', keyword).replace('%currentPage', String(this.currentPage))
+      this.$store.commit(types.UPDATE_IS_SEARCHING, true)
       await axios.get(url).then(res => {
         this.lastPage = res.data.pagingInfo.pageCount
 
@@ -68,6 +71,9 @@ export default {
           this.hotels.push(hotel)
         })
       })
+        .then(() => {
+          this.$store.commit(types.UPDATE_IS_SEARCHING, false)
+        })
         .catch(err => { throw err })
     },
     pageReset(){

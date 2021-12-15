@@ -1,6 +1,8 @@
 <template>
   <div class="signin-view">
-    <h1>Signin</h1>
+    <h1 class="bg-red-300">
+      Signin
+    </h1>
     <TripSigninForm
       class="signin-form"
       :signin="signin" />

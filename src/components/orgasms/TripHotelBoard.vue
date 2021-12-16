@@ -52,7 +52,7 @@ export default {
   methods: {
     async searchHotels(keyword){
       this.hotels = []
-      const url = HOTEL_SEARCH_URL.replace('%keyword', keyword).replace('%currentPage', String(this.currentPage))
+      const url = HOTEL_SEARCH_URL.replace('%keyword', keyword).replace('%page', String(this.currentPage))
       this.$store.commit(types.UPDATE_IS_SEARCHING, true)
       await axios.get(url).then(res => {
         this.lastPage = res.data.pagingInfo.pageCount

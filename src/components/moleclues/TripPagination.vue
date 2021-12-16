@@ -1,33 +1,30 @@
 <template>
-  <div>
-    <span v-if="isFirstPage">
-      ← 前へ
-    </span>
-    <TripButton
-      v-else
-      :disabled="isSearching"
-      label="← 前へ"
-      @onClick="transitionPage(currentPage-1)" />
+  <div class="text-gray-700">
     <TripButton
       v-if="!isFirstPage"
       :disabled="isSearching"
-      label="1"
+      label="←"
+      @onClick="transitionPage(currentPage-1)" />
+    <TripButton
+      v-if="!isFirstPage"
+      class="ml-4"
+      :disabled="isSearching"
+      label="1 "
       @onClick="transitionPage(1)" />
-    <span v-if="currentPage > 2">...</span>
-    <span> {{ currentPage }}</span>
+    <span
+      v-if="currentPage > 2">...</span>
+    <span class="mx-4 font-bold"> {{ currentPage }}</span>
     <span v-if="currentPage < lastPage -1">...</span>
     <TripButton
       v-if="!isLastPage"
+      class="mr-4"
       :disabled="isSearching"
       :label="lastPageLabel"
       @onClick="transitionPage(lastPage)" />
-    <span v-if="isLastPage">
-      次へ →
-    </span>
     <TripButton
-      v-else
+      v-if="!isLastPage"
       :disabled="isSearching"
-      label="次へ →"
+      label=" →"
       @onClick="transitionPage(currentPage+1)" />
   </div>
 </template>

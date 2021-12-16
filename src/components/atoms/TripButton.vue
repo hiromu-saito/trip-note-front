@@ -19,19 +19,24 @@ export default {
     },
     disabled: {
       type: Boolean,
-      defalt: false
+      default: false
     },
     type: {
       type: String,
       default: 'button'
+    },
+    buttonStyle: {
+      type: String,
+      default: '',
+      required: false
     }
   },
   computed: {
     classes(){
       if (this.disabled){
-        return 'not-allowed'
+        return `cursor-not-allowed ${this.buttonStyle}`
       }
-      return ''
+      return this.buttonStyle
     }
   },
   methods: {
@@ -41,10 +46,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.not-allowed{
-  cursor: not-allowed;
-}
-
-</style>

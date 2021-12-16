@@ -1,18 +1,18 @@
 <template>
   <div>
-    <p>キーワード検索</p>
     <ValidationObserver v-slot="{invalid}">
       <form @submit.prevent="onClick">
         <TripValidationInput
-          class="search-form"
           name="keyword"
           input-type="text"
+          placeholder="ホテル名を入力してください"
           :value.sync="keyword"
           :disp-error="false"
           rules="required" />
         <TripButton
           label="検索"
           type="submit"
+          button-style="bg-blue-500 hover:bg-blue-600 text-xs text-white  mt-4 py-2 px-4 w-32 rounded-md "
           :disabled="invalid || isSearching" />
       </form>
     </validationobserver>
@@ -52,9 +52,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.search-form{
-  margin-bottom: 10px;
-}
-</style>

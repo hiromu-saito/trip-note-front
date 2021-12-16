@@ -1,11 +1,9 @@
 <template>
   <div>
     <TripHeader :signout="signout" />
-    <section>
-      <main>
-        <router-view />
-      </main>
-    </section>
+    <main>
+      <router-view class="m-16" />
+    </main>
   </div>
 </template>
 
@@ -27,14 +25,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-section{
-  display: flex;
-}
-main {
-  /* margin:0 auto; */
-  margin: 20px;
-  flex-basis: 1400px;
-}
-</style>

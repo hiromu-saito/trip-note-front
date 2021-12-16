@@ -6,7 +6,7 @@
       @submit.prevent="onSignup">
       <label for="メールアドレス">メールアドレス</label>
       <TripValidationInput
-        class="validate-form"
+        class="h-20"
         name="メールアドレス"
         rules="required|email"
         placeholder="メールアドレス"
@@ -14,7 +14,7 @@
         :value.sync="mailAddress" />
       <label for="パスワード">パスワード</label>
       <TripValidationInput
-        class="validate-form"
+        class="h-20"
         name="パスワード"
         rules="required|minmax:8,20|numalpha"
         placeholder="パスワード"
@@ -23,16 +23,19 @@
         :value.sync="password" />
       <label for="確認用パスワード">確認用パスワード</label>
       <TripValidationInput
-        class="validate-form"
+        class="h-20"
         name="確認用パスワード"
         rules="required|minmax:8,20|numalpha|passmatch:パスワード"
         placeholder="確認用パスワード"
         input-type="password"
         :value.sync="confirmPassword" />
-      <TripButton
-        :label="buttonLabel"
-        :disabled="invalid || signupProgress"
-        type="submit" />
+      <div class="text-center">
+        <TripButton
+          :label="buttonLabel"
+          :disabled="invalid || signupProgress"
+          button-style="bg-blue-500  text-white font-semibold py-2 px-4 w-56 rounded-md hover:bg-blue-600"
+          type="submit" />
+      </div>
     </ValidationObserver>
     <p
       v-if="duplicateError"

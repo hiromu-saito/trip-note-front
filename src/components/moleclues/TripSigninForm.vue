@@ -4,18 +4,18 @@
       v-slot="{invalid}"
       tag="form"
       @submit.prevent="onSignin">
-      <label for="mailAddress">メールアドレス</label>
-      <TripValidationForm
+      <label for="メールアドレス">メールアドレス</label>
+      <TripValidationInput
         class="h-20"
-        name="mailAddress"
+        name="メールアドレス"
         rules="email|required"
         input-type="text"
         placeholder="メールアドレス"
         :value.sync="mailAddress" />
-      <label for="password">パスワード</label>
-      <TripValidationForm
+      <label for="パスワード">パスワード</label>
+      <TripValidationInput
         class="h-20"
-        name="password"
+        name="パスワード"
         rules="required|minmax:8,20|numalpha"
         input-type="password"
         placeholder="パスワード"
@@ -37,15 +37,15 @@
 </template>
 
 <script>
-import TripButton from '../atoms/TripButton.vue'
-import TripValidationForm from '../atoms/TripValidationInput.vue'
 import {ValidationObserver} from '../../common/validate'
+import TripButton from '../atoms/TripButton.vue'
+import TripValidationInput from '../atoms/TripValidationInput.vue'
 
 export default {
   name: 'TripSigninForm',
   components: {
     TripButton,
-    TripValidationForm,
+    TripValidationInput,
     ValidationObserver
   },
   props: {
@@ -90,7 +90,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

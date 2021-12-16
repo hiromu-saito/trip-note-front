@@ -1,12 +1,25 @@
 <template>
-  <div class="signup-view">
-    <h1>Signup</h1>
-    <TripSignupForm
-      :signup="signup"
-      class="signup-form" />
-    <router-link to="/signin">
-      サインインはこちら
-    </router-link>
+  <div class="w-1/2 m-auto mt-16">
+    <h1
+      class="sm:text-3xl
+      text-2xl
+      font-medium
+      title-font
+      mb-4
+      text-gray-600
+      text-center">
+      Signup
+    </h1>
+    <div class="w-1/2 m-auto">
+      <TripSignupForm
+        class="mb-12"
+        :signup="signup" />
+      <router-link
+        to="/signin"
+        class="text-center block text-gray-500">
+        ログインはこちら
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -34,12 +47,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.signup-view{
-  margin: 100px 200px;
-}
-.signup-form{
-  height: 400px;
-}
-
-</style>

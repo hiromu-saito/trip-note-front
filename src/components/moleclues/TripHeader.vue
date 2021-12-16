@@ -5,6 +5,7 @@
     </h1>
     <TripButton
       class="trip-button"
+      button-style="bg-red-500 text-white  py-2 px-4 rounded-md text-xs"
       :disabled="signoutProgress"
       :label="buttonLabel"
       @onClick="onSignout" />

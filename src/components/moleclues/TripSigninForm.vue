@@ -22,6 +22,7 @@
         :value.sync="password" />
       <TripButton
         :disabled="invalid || signinProgress"
+        button-style="bg-blue-500 text-white font-semibold py-2 px-8 w-56 rounded-md hover:bg-blue-600"
         :label="buttonLabel"
         type="submit" />
     </ValidationObserver>

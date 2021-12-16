@@ -2,7 +2,6 @@
   <div>
     <TripHeader :signout="signout" />
     <section>
-      <TripNavigationBar />
       <main>
         <router-view />
       </main>
@@ -12,12 +11,10 @@
 
 <script>
 import TripHeader from '../moleclues/TripHeader.vue'
-import TripNavigationBar from '../moleclues/TripNavigationBar.vue'
 export default {
   name: 'TripBoardView',
   components: {
     TripHeader,
-    TripNavigationBar
   },
   methods: {
     signout(){

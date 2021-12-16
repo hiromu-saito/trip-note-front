@@ -6,7 +6,7 @@
       @submit.prevent="onSignin">
       <label for="mailAddress">メールアドレス</label>
       <TripValidationForm
-        class="validate-form"
+        class="h-20"
         name="mailAddress"
         rules="email|required"
         input-type="text"
@@ -14,23 +14,25 @@
         :value.sync="mailAddress" />
       <label for="password">パスワード</label>
       <TripValidationForm
-        class="validate-form"
+        class="h-20"
         name="password"
         rules="required|minmax:8,20|numalpha"
         input-type="password"
         placeholder="パスワード"
         :value.sync="password" />
-      <TripButton
-        :disabled="invalid || signinProgress"
-        button-style="bg-blue-500 text-white font-semibold py-2 px-8 w-56 rounded-md hover:bg-blue-600"
-        :label="buttonLabel"
-        type="submit" />
+      <div class="text-center">
+        <TripButton
+          :disabled="invalid || signinProgress"
+          button-style="bg-blue-500  text-white font-semibold py-2 px-4 w-56 rounded-md hover:bg-blue-600"
+          :label="buttonLabel"
+          type="submit" />
+        <p
+          v-if="authError"
+          class="text-red-500 mt-4">
+          メールアドレスまたはパスワードが正しくありません。
+        </p>
+      </div>
     </ValidationObserver>
-    <p
-      v-if="authError"
-      class="auth-error">
-      メールアドレスまたはパスワードが正しくありません。
-    </p>
   </div>
 </template>
 
@@ -90,10 +92,5 @@ export default {
 </script>
 
 <style scoped>
-.validate-form{
-  height: 60px;
-}
-.auth-error{
-  color: red;
-}
+
 </style>

@@ -1,14 +1,18 @@
 <template>
-  <div class="signin-view">
-    <h1 class="bg-red-300">
+  <div class="signin-view w-1/2 m-auto mt-16">
+    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-center">
       Signin
     </h1>
-    <TripSigninForm
-      class="signin-form"
-      :signin="signin" />
-    <router-link to="/signup">
-      サインアップはこちら
-    </router-link>
+    <div class="w-1/2 m-auto">
+      <TripSigninForm
+        class="mb-12"
+        :signin="signin" />
+      <router-link
+        to="/signup"
+        class="text-center block  text-gray-500">
+        サインアップはこちら
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -36,13 +40,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.signin-view{
-  margin: 100px 200px;
-}
-.signin-form{
-  height: 400px;
-}
-
-</style>

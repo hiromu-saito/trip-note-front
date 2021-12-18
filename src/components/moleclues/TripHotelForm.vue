@@ -3,6 +3,7 @@
     <ValidationObserver v-slot="{invalid}">
       <form @submit.prevent="onClick">
         <TripValidationInput
+          class="w-1/4"
           name="keyword"
           input-type="text"
           placeholder="ホテル名を入力してください"

@@ -6,14 +6,15 @@
       @search="searchHotels" />
     <TripPagination
       v-if="isDisplayPagination"
-      class="pagination"
+      class="text-center"
       :current-page="currentPage"
       :last-page="lastPage"
       @transition-page="transitionPage" />
-    <ul class="hotel-board">
+    <ul class="flex flex-wrap items-stretch">
       <li
         v-for="( hotel,index ) in hotels"
-        :key="index">
+        :key="index"
+        class="w-1/3">
         <TripHotelCard
           :hotel="hotel" />
       </li>
@@ -62,8 +63,8 @@ export default {
           const hotel = {
             name: hotelBasicInfo.hotelName,
             address: hotelBasicInfo.address1 + hotelBasicInfo.address2,
-            special: hotelBasicInfo.hotelSpecial.length <= 30 ? hotelBasicInfo.hotelSpecial : hotelBasicInfo.hotelSpecial.slice(0, 30) + '...',
-            image: hotelBasicInfo.hotelThumbnailUrl,
+            special: hotelBasicInfo.hotelSpecial.length <= 30 ? hotelBasicInfo.hotelSpecial : hotelBasicInfo.hotelSpecial.slice(0, 60) + '...',
+            image: hotelBasicInfo.hotelImageUrl,
             url: hotelBasicInfo.hotelInformationUrl,
             postalCode: hotelBasicInfo.postalCode,
             phone: hotelBasicInfo.telephoneNo
@@ -87,16 +88,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.hotel-board{
-  margin: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  list-style: none;
-}
-.pagination{
-  text-align: center;
-}
-
-</style>

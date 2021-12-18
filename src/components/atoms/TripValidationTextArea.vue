@@ -6,12 +6,12 @@
       :rules="rules">
       <textarea
         v-model="inputValue"
+        :class=" textAreaStyle"
         :name="name"
         :placeholder="placeholder" />
       <br>
       <span
-        v-show="dispError"
-        class="validate-error">{{ errors[0] }}</span>
+        class="text-red-500 text-sm">{{ errors[0] }}</span>
     </validation-provider>
   </div>
 </template>
@@ -29,10 +29,6 @@ export default {
       type: String,
       required: true
     },
-    inputType: {
-      type: String,
-      required: true
-    },
     name: {
       type: String,
       required: true
@@ -46,9 +42,9 @@ export default {
       type: String,
       default: ''
     },
-    dispError: {
-      type: Boolean,
-      default: true
+    textAreaStyle: {
+      type: String,
+      default: ''
     }
   },
   computed: {
@@ -63,14 +59,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.validate-error{
-  color: red;
-  font-size: 0.6em;
-}
-textarea{
-  overflow: hidden;
-}
-
-</style>

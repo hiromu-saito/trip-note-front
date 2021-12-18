@@ -1,42 +1,67 @@
 <template>
   <div
     id="overlay">
-    <div id="content">
-      <TripIcon
-        class="close-icon"
-        @onClick="close">
-        ×
-      </TripIcon>
-      <ValidationObserver
-        v-slot="{invalid}"
-        tag="form"
-        @submit.prevent="onSubmit">
-        <span>日時</span>
-        <TripValidationInput
-          class="date-form"
-          name="日時"
-          input-type="date"
-          rules="required"
-          :value.sync="accommodationDate" />
-        <label>感想
-          <TripValidationTextArea
-            class="impressions-form"
-            name="感想"
-            input-type="text"
-            rules="max:30"
-            :value.sync="impression" />
-        </label>
-        <TripButton
-          :disabled="invalid"
-          :label="buttonLabel"
-          type="submit" />
-      </ValidationObserver>
+    <div class=" bg-gray-200 w-1/2">
+      <div class="rounded-lg border border-gray-300 shadow-xl">
+        <div
+          class="flex flex-row justify-between w-full p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
+          <p class="font-semibold text-gray-800 w-full">
+            思い出を残す
+          </p>
+          <button @click="close">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <ValidationObserver
+          v-slot="{invalid}"
+          tag="form"
+          @submit.prevent="onSubmit">
+          <div class="flex flex-col px-6 py-5 bg-gray-50">
+            <p class="mb-2 font-semibold text-gray-700">
+              日時
+            </p>
+            <TripValidationInput
+              form-style="p-5 mb-5 bg-white border border-gray-200 rounded shadow-sm w-full"
+              class="h-32"
+              name="日時"
+              input-type="date"
+              rules="required"
+              :value.sync="accommodationDate" />
+            <p class="mb-2 font-semibold text-gray-700">
+              感想
+            </p>
+            <TripValidationTextArea
+              class="h-48"
+              name="感想"
+              rules="max:200"
+              text-area-style="p-5 mb-5 bg-white border border-gray-200 rounded shadow-sm h-36 w-full"
+              :value.sync="impression" />
+            <div class="text-center">
+              <TripButton
+                :disabled="invalid"
+                :label="buttonLabel"
+                button-style="mt-4 px-4 py-2 text-white font-semibold bg-blue-500 rounded w-1/4"
+                type="submit" />
+            </div>
+          </div>
+        </ValidationObserver>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import TripIcon from '../atoms/TripIcon.vue'
 import TripValidationInput from '../atoms/TripValidationInput.vue'
 import TripValidationTextArea from '../atoms/TripValidationTextArea.vue'
 import TripButton from '../atoms/TripButton.vue'
@@ -45,7 +70,6 @@ import {ValidationObserver} from '../../common/validate'
 export default {
   name: 'TripCardMordal',
   components: {
-    TripIcon,
     TripValidationInput,
     TripButton,
     ValidationObserver,
@@ -83,7 +107,7 @@ export default {
       }
     },
     buttonLabel(){
-      return this.updateMode ? '思い出を更新する':'思い出を残す'
+      return this.updateMode ? '記録を更新する':'記録を残す'
     }
   },
   methods: {
@@ -125,35 +149,5 @@ export default {
   align-items: center;
   justify-content: center;
 
-}
-#content{
-  z-index:2;
-  width:50%;
-  height: 30%;
-  padding: 1em;
-  background:#fff;
-}
-
-#content input,
-#content textarea{
-  width: 100%;
-}
-#content p button{
-  float: right;
-}
-.close-icon{
-  float: right;
-  margin: 0;
-}
-.date-form{
-  margin-bottom: 10px;
-  height: 70px;
-}
-.impressions-form{
-  margin: 10px 0;
-  height: 80px;
-}
-.impressions-form textarea{
-  height: 50px;
 }
 </style>

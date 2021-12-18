@@ -30,7 +30,7 @@
             </svg>
           </a>
           <TripButton
-            label="思い出を残す"
+            label="記録を残す"
             button-style="bg-blue-500  text-white  font-semibold py-2 px-4 w-36 rounded-md hover:bg-blue-600 text-xs"
             @onClick="displayMordal" />
         </div>

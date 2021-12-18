@@ -63,7 +63,7 @@ export default {
           const hotel = {
             name: hotelBasicInfo.hotelName,
             address: hotelBasicInfo.address1 + hotelBasicInfo.address2,
-            special: hotelBasicInfo.hotelSpecial.length <= 30 ? hotelBasicInfo.hotelSpecial : hotelBasicInfo.hotelSpecial.slice(0, 60) + '...',
+            special: hotelBasicInfo.hotelSpecial.length <= 30 ? hotelBasicInfo.hotelSpecial : hotelBasicInfo.hotelSpecial.slice(0, 100) + '...',
             image: hotelBasicInfo.hotelImageUrl,
             url: hotelBasicInfo.hotelInformationUrl,
             postalCode: hotelBasicInfo.postalCode,

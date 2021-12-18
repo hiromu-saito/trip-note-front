@@ -3,8 +3,7 @@
     <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
       <img
         class="md:h-28 w-full object-cover object-center"
-        :src="hotel.image"
-        alt="blog">
+        :src="hotel.image">
       <div class="p-6">
         <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
           {{ hotel.name }}
@@ -91,17 +90,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.hotel-card{
-
-}
-.hotel-name{
-  font-weight:  bold;
-}
-.image-test{
-  height: 200px;
-  width: 200px;
-  border: dotted black 1px;
-}
-</style>

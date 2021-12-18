@@ -1,30 +1,30 @@
 <template>
-  <div class="memory-card">
-    <div>
-      <p class="hotel-name">
-        {{ memory.hotelName }}
-      </p>
-      <p>
-        {{ memory.accommodationDate }}
-      </p>
-      <p>
-        {{ memory.impression }}
-      </p>
-    </div>
-    <div>
-      <p>
-        <a
-          :href="memory.detailUrl"
-          target="_blank">
-          <img :src="memory.hotelImage">
-        </a>
-      </p>
-      <TripButton
-        label="更新する"
-        @onClick="displayMordal" />
-      <TripButton
-        label="削除する" 
-        @onClick="removeMemory" />
+  <div class="p-4">
+    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+      <img
+        class="md:h-28 w-full object-cover object-center"
+        :src="memory.hotelImage">
+      <div class="p-6">
+        <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">
+          {{ memory.accommodationDate }}
+        </h2>
+        <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+          {{ memory.hotelName }}
+        </h1>
+        <p class="leading-relaxed mb-5 h-8">
+          {{ memory.impression }}
+        </p>
+      </div>
+      <div class="flex justify-between m-4">
+        <TripButton
+          label="削除する" 
+          button-style="text-blue-500 border border-blue-500 font-semibold py-2 px-8 rounded-md"
+          @onClick="removeMemory" />
+        <TripButton
+          label="更新する"
+          button-style="bg-blue-500 text-white font-semibold py-2 px-8 rounded-md"
+          @onClick="displayMordal" />
+      </div>
     </div>
     <TripCardMordal
       v-show="overlay"
@@ -89,31 +89,3 @@ export default {
 }
 </script>
 
-<style　scoped>
-.memory-card button{
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
-.memory-card img{
-  height: 80px;
-  width: 140px;
-  }
-.memory-card{
-  border: solid 1px black;
-  display: grid;
-  grid-template-columns: 250px 150px;
-  height: 200px;
-  column-gap: 10px;
-  row-gap: 1em;
-}
-.hotel-name{
-  font-weight: bold;
-}
-.date-form,
-.impressions-form{
-  margin-left: 10px;
-  height: 50px;
-}
-
-</style>
